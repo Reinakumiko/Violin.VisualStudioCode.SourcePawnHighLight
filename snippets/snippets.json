@@ -1,0 +1,28 @@
+{
+	"Include": {
+		"prefix": "inc",
+		"description": "Include a new library",
+		"body": [
+			"#include <${include}>",
+			"$0"
+		]
+	},
+	"Define":{
+		"prefix": "def",
+		"description": "A new define",
+		"body": [
+			"#define ${Name} ${body}",
+			"$0"
+		]
+	},
+	"Class": {
+		"prefix": "methodmap",
+		"body": [
+			"methodmap ${Name}",
+			"{",
+			"	$0",
+			"}"
+		],
+		"description": "Decalre a new Class(methodmap)"
+	}
+}

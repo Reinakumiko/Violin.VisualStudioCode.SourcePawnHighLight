@@ -1,0 +1,49 @@
+{
+    "name": "sourcepawn",
+    "displayName": "SourcePawn Language Support",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "Violin Studio",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "sourcepawn",
+                "aliases": [
+                    "Source Pawn",
+                    "sourcepawn"
+                ],
+                "extensions": [
+                    ".sp",
+                    ".inc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "sourcepawn",
+                "scopeName": "source.sourcepawn",
+                "path": "./syntaxes/sourcepawn.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "sourcepawn",
+                "path": "./snippets/snippets.json"
+            }
+        ],
+        "themes": [
+            {
+				"label": "SourcePawn Light (Visual Studio)",
+				"uiTheme": "vs",
+				"path": "./themes/light_vs.json"
+            }
+        ]
+    }
+}
