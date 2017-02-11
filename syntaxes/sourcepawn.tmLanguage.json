@@ -50,7 +50,7 @@
 					}
 				},
 				{
-					"match": "^\\s*#\\s*(if|endif|undef|endinput)\\b\\s*(.*?)*",
+					"match": "^\\s*#\\s*(if|else|endif|undef|endinput)\\b\\s*(.*?)*",
 					"name": "meta.preprocessor.sourcepawn",
 					"captures": {
 						"2": {
