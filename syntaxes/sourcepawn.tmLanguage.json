@@ -22,6 +22,9 @@
 		},
 		{
 			"include": "#methodmap"
+		},
+		{
+			"include": "#numeric"
 		}
 	],
 	"repository": {
@@ -29,8 +32,13 @@
 			"patterns": [
 				{
 					"match": "^\\s*#\\s*(define|pragma)\\b\\s*(.*?)?\\b\\s(.*)?",
-					"name": "meta.preprocessor.sourcepawn",
 					"captures": {
+						"0": {
+							"name": "meta.preprocessor.sourcepawn"
+						},
+						"1": {
+							"name": "meta.preprocessor.sourcepawn"
+						},
 						"2": {
 							"name": "keyword.operator",
 							"patterns": [
@@ -44,23 +52,27 @@
 							"patterns": [
 								{
 									"include": "#comments"
+								},
+								{
+									"include": "#numeric"
+								},
+								{
+									"include": "#strings"
 								}
 							]
 						}
 					}
 				},
 				{
-					"match": "^\\s*#\\s*(if|else|endif|undef|endinput)\\b\\s*(.*?)*",
+					"match": "^\\s*#\\s*(endif|undef|endinput)\\b",
+					"name": "meta.preprocessor.sourcepawn"
+				},
+				{
+					"match": "^\\s*#\\s*(if|else)\\b\\s((!)?defined|if)\\b(.*)?",
 					"name": "meta.preprocessor.sourcepawn",
 					"captures": {
-						"2": {
-							"name": "keyword.operator",
-							"patterns": [
-								{
-									"match": ".*",
-									"name": "emphasis"
-								}
-							]
+						"4": {
+							"name": "emphasis"
 						}
 					}
 				}
@@ -70,19 +82,32 @@
 			"patterns": [
 				{
 					"name": "keyword.control.sourcepawn",
-					"match": "\\b(if|while|for|return|break|case|switch)\\b"
+					"match": "\\b(if|while|for|return|break|case|switch|false|true)\\b"
 				},
 				{
 					"name": "keyword.methodmap.sourcepawn",
-					"match": "\\b(methodmap|get|set|char|int|float|void|property)\\b"
+					"match": "\\b(methodmap|get|set|property)\\b"
 				},
 				{
 					"name": "keyword.declare.sourcepawn",
-					"match": "\\b(_|new|decl|Float|String|bool|const|any|enum|typedef|typeset|function)\\b"
+					"match": "\\b(_|new|decl|const|enum|typedef|typeset|function)\\b"
 				},
 				{
 					"name": "keyword.function.sourcepawn",
 					"match": "\\b(native|stock|public|forward|static)\\b"
+				},
+				{
+					"name": "keyword.basetype.sourcepawn",
+					"match": "\\b(_|Float|String|bool|any|float|void|int|char)\\b"
+				},
+				{
+					"name": "keyword.basetype.convert.soucepawn",
+					"match": "\\bview_as<([_a-zA-Z][_a-zA-Z0-9]+?)>",
+					"captures": {
+						"1": {
+							"name": "keyword.basetype.sourcepawn"
+						}
+					}
 				}
 			]
 		},
@@ -151,7 +176,7 @@
 		"methodmap": {
 			"patterns": [
 				{
-					"name": "entity.other.attribute-name",
+					"name": "entity.class.basetype.sourcepawn",
 					"match": "\\b(Action|Handle|ConVar)\\b",
 					"captures": {
 						"1": {
@@ -160,13 +185,33 @@
 					}
 				},
 				{
-					"name": "meta.structure.dictionary.key.python",
-					"match": "enum\\s+?[_a-zA-Z][_a-zA-Z0-9]+?\\b",
+					"name": "entity.class.basetype.sourcepawn",
+					"match": "enum\\s+\\b([_a-zA-Z][_a-zA-Z0-9]+?)\\b",
 					"captures": {
 						"0": {
 							"name": "emphasis"
 						}
 					}
+				}
+			]
+		},
+		"numeric": {
+			"patterns": [
+				{
+					"match": "\\-\\b0(x|X)[0-9a-fA-F_]+\\b",
+					"name": "constant.numeric.hex.sourcepawn"
+				},
+				{
+					"match": "\\-\\b([0-9_]+)?\\.[0-9_]+\\b",
+					"name": "constant.numeric.decumal.sourcepawn"
+				},
+				{
+					"match": "\\-\\b0(b|B)[01_]+\\b",
+					"name": "constant.numeric.binary.sourcepawn"
+				},
+				{
+					"match": "\\-\\b[0-9_]+\\b",
+					"name": "constant.numeric.integer.sourcepawn"
 				}
 			]
 		}
