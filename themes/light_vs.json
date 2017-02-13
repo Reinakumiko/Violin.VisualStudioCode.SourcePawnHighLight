@@ -348,20 +348,32 @@
 			}
 		},
 		{
+			"scope": "operator.sourcepawn",
+			"settings":{
+				"foreground": "#ffff00"
+			}
+		},
+		{
+			"scope": "keyword.declare.basetype.sourcepawn",
+			"settings": {
+				"foreground": "#ff0000"
+			}
+		},
+		{
 			"name": "SourcePawn 中的基础类及数据类型",
 			"scope": [
 				"keyword.basetype",
 				"entity.class.basetype.sourcepawn"
 			],
 			"settings": {
-				"foreground": "#0451a5"
+				"foreground": "#0451a5",
+				"fontStyle": "italic"
 			}
 		},
 		{
 			"scope": [
 				"constant.numeric.hex",
 				"constant.numeric.decumal",
-				"constant.numeric.binary",
 				"constant.numeric.integer"
 			],
 			"settings": {
