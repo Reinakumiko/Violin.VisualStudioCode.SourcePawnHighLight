@@ -25,6 +25,12 @@
 		},
 		{
 			"include": "#numeric"
+		},
+		{
+			"include": "#operator"
+		},
+		{
+			"include": "#enumeration"
 		}
 	],
 	"repository": {
@@ -40,15 +46,10 @@
 							"name": "meta.preprocessor.sourcepawn"
 						},
 						"2": {
-							"name": "keyword.operator",
-							"patterns": [
-								{
-									"match": ".*",
-									"name": "emphasis"
-								}
-							]
+							"name": "name.preprocessor.declare.sourcepawn"
 						},
 						"3": {
+							"name": "meta.preprocessor.string",
 							"patterns": [
 								{
 									"include": "#comments"
@@ -64,17 +65,17 @@
 					}
 				},
 				{
-					"match": "^\\s*#\\s*(endif|undef|endinput)\\b",
-					"name": "meta.preprocessor.sourcepawn"
-				},
-				{
 					"match": "^\\s*#\\s*(if|else)\\b\\s((!)?defined|if)\\b(.*)?",
 					"name": "meta.preprocessor.sourcepawn",
 					"captures": {
 						"4": {
-							"name": "emphasis"
+							"name": "name.preprocessor.declare.sourcepawn"
 						}
 					}
+				},
+				{
+					"match": "^\\s*#\\s*(else|endif|undef|endinput)\\b",
+					"name": "meta.preprocessor.sourcepawn"
 				}
 			]
 		},
@@ -82,27 +83,39 @@
 			"patterns": [
 				{
 					"name": "keyword.control.sourcepawn",
-					"match": "\\b(if|else|while|for|return|break|case|switch|false|true)\\b"
+					"match": "\\b(if|else|while|for|return|break|case|switch|const)\\b"
+				},
+				{
+					"name": "keyword.boolearn.sourcepawn",
+					"match": "\\b(false|true)\\b"
 				},
 				{
 					"name": "keyword.methodmap.sourcepawn",
-					"match": "\\b(methodmap|get|set|property)\\b"
+					"match": "\\b(get|set|property)\\b"
+				},
+				{
+					"name": "keyword.object.sourcepawn",
+					"match": "\\b(new)\\b"
+				},
+				{
+					"name": "keyword.declare.other.sourcepawn",
+					"match": "\\b(decl|stock)\\b"
 				},
 				{
 					"name": "keyword.declare.basetype.sourcepawn",
-					"match": "\\b(_|new|decl|const|enum|function)\\b"
+					"match": "\\b(_|Float|String|Function)\\b"
 				},
 				{
 					"name": "keyword.function.sourcepawn",
 					"match": "\\b(native|static|typedef|typeset)\\b"
 				},
 				{
-					"match": "\\b(public|forward|stock)\\b",
-					"name": "keyword.declare.function.sourcepawn"
+					"name": "keyword.declare.function.sourcepawn",
+					"match": "(public|forward)\\b"
 				},
 				{
 					"name": "keyword.basetype.sourcepawn",
-					"match": "\\b(_|Float|String|bool|any|float|void|int|char)\\b"
+					"match": "\\b(bool|any|float|void|int|char)\\b"
 				},
 				{
 					"name": "keyword.convert.soucepawn",
@@ -110,6 +123,9 @@
 					"captures": {
 						"1": {
 							"name": "keyword.basetype.sourcepawn"
+						},
+						"2": {
+							"name": "entity.class.basetype.sourcepawn"
 						}
 					}
 				}
@@ -180,22 +196,43 @@
 		"methodmap": {
 			"patterns": [
 				{
-					"name": "entity.class.basetype.sourcepawn",
-					"match": "\\b(Action|Handle|ConVar)\\b",
+					"name": "keyword.declare.methodmap.sourcepawn",
+					"match": "(methodmap)\\s+\\b([_a-zA-Z][_a-zA-Z0-9]+?)\\b\\s+(<\\s+\\b([_a-zA-Z][_a-zA-Z0-9]+?)\\b)?",
 					"captures": {
 						"1": {
-							"name": "emphasis"
+							"name": "keyword.basetype.sourcepawn"
+						},
+						"2": {
+							"name": "entity.class.types.sourcepawn"
+						},
+						"3": {
+							"name": "entity.class.types.sourcepawn"
 						}
 					}
 				},
 				{
-					"name": "entity.class.basetype.sourcepawn",
-					"match": "enum\\s+\\b([_a-zA-Z][_a-zA-Z0-9]+?)\\b",
+					"name": "entity.class.types.sourcepawn",
+					"match": "\\b(Handle|ConVar|__nullable__)\\b"
+				}
+			]
+		},
+		"enumeration": {
+			"patterns": [
+				{
+					"name": "entity.enumeration.types.sourcepawn",
+					"match": "(enum)\\s+\\b([_a-zA-Z][_a-zA-Z0-9]+?)\\b",
 					"captures": {
-						"0": {
-							"name": "emphasis"
+						"1": {
+							"name": "keyword.basetype.sourcepawn"
+						},
+						"2": {
+							"name": "entity.enumeration.types.sourcepawn"
 						}
 					}
+				},
+				{
+					"name": "entity.enumeration.types.sourcepawn",
+					"match": "\\b(Action)\\b"
 				}
 			]
 		},
@@ -218,8 +255,12 @@
 		"operator": {
 			"patterns": [
 				{
-					"match": "(\\!|\\$|%|&|\\*|\\+|\\-|\\.|/|\\:|<|=|>|\\?|\\^\\||~)",
+					"match": "\\!|\\$|%|&|\\*|\\+|\\-|\\.|/|\\:|<|=|>|\\?|\\^\\||~",
 					"name": "operator.sourcepawn"
+				},
+				{
+					"match": "\\(|\\)|\\[|\\]|\\{|\\}",
+					"name": "quoter.operator.sourcepawn"
 				}
 			]
 		}

@@ -1,18 +1,16 @@
 {
 	"Include": {
-		"prefix": "inc",
+		"prefix": "include",
 		"description": "Include a new library",
 		"body": [
-			"#include <${include}>",
-			"$0"
+			"#include <${include}>"
 		]
 	},
 	"Define":{
-		"prefix": "def",
+		"prefix": "define",
 		"description": "A new define",
 		"body": [
-			"#define ${Name} ${body}",
-			"$0"
+			"#define ${Name} ${body}"
 		]
 	},
 	"Class": {

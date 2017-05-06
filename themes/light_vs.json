@@ -349,35 +349,64 @@
 		},
 		{
 			"scope": "operator.sourcepawn",
-			"settings":{
-				"foreground": "#ffff00"
+			"settings": {
+				"foreground": "#008000"
 			}
 		},
 		{
-			"scope": "keyword.declare.basetype.sourcepawn",
+			"scope": "quoter.operator.sourcepawn",
+			"settings":{
+				"foreground": "#91792B"
+			}
+		},
+		{
+			"name": "SourcePawn 中的另类声明符",
+			"scope": [
+				"keyword.object.sourcepawn",
+				"keyword.boolearn.sourcepawn",
+				"keyword.declare.function.sourcepawn"
+			],
 			"settings": {
 				"foreground": "#ff0000"
 			}
 		},
 		{
+			"name": "",
+			"scope": ["keyword.declare.other.sourcepawn"],
+			"settings":{
+				"foreground": "#0C8F0C"
+			}
+		},
+		{
 			"name": "SourcePawn 中的基础类及数据类型",
 			"scope": [
-				"keyword.basetype",
-				"entity.class.basetype.sourcepawn"
+				"keyword.declare.basetype.sourcepawn",
+				"entity.class.types.sourcepawn", 
+				"entity.enumeration.types.sourcepawn"
 			],
 			"settings": {
-				"foreground": "#0451a5",
-				"fontStyle": "italic"
+				"foreground": "#2B91AF"
+				//"fontStyle": "italic"
 			}
 		},
 		{
 			"scope": [
+				"name.preprocessor.declare.sourcepawn"
+			],
+			"settings": {
+				"foreground": "#2B91AF",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "SourcePawn 中的数字常量类型",
+			"scope": [
 				"constant.numeric.hex",
-				"constant.numeric.decumal",
+				"constant.numeric.decimal",
 				"constant.numeric.integer"
 			],
 			"settings": {
-				"foreground": "#09885a"
+				"foreground": "#008080"//"#09885a"
 			}
 		}
 	]
